@@ -27,3 +27,17 @@ var myQuery2 =
     select $"<{v.ToUpper()}>";
 
 Console.WriteLine(String.Join(" ", myQuery2));
+
+//Пример 3 LINQ метод расширения
+var myQuery3 = cities1.Where(v => v.ToLower().EndsWith("а")).Select(v => $"<{v.ToUpper()}>");
+
+Console.WriteLine(String.Join(" ", myQuery3));
+Console.WriteLine();
+
+var arr3 = cities1.Where(v => v.ToLower().EndsWith("а")).Select(v => $"<{v.ToUpper()}>").ToArray();
+
+Console.WriteLine(String.Join(" ", arr3));
+Console.WriteLine();
+
+Console.WriteLine(String.Join("\n", arr3));
+Console.WriteLine(String.Join(Environment.NewLine, arr3));
