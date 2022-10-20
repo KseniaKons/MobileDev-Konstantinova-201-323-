@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfResources.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfResources"
+        mc:Ignorable="d"
+        Title="Recources" Height="450" Width="300">
+    <Window.Resources>
+        <SolidColorBrush x:Key="Background_Plai" Color="LightGreen"/>
+        <SolidColorBrush x:Key="Background_Stop" Color="Coral"/>
+        <ContentControl x:Key="Content_Plai" Content="PLAY!!"/>
+    </Window.Resources>
+    
+    <StackPanel>
+        <Button Content='1' Height="20" Background="LightGreen"/>
+        <Button Content='2' Height="20" Background="Coral"/>
+        <Button Content='3' Height="30" Background="{StaticResource Background_Plai}"/>
+        <Button Content='4' Height="40" Background="{StaticResource Background_Stop}"/>
+        <Button Content='{DynamicResource Content_Plai}' 
+                Height="50" 
+                Background="{DynamicResource Background_Plai}"
+                
+                />
+        <Button Content="Changt Background_Plai" Click="ButChangt_Background_Plai"/>
+        <Button Content="Changt Content_Plai" Click="ButChangtContentPlai"/>
+
+    </StackPanel>
+</Window>
