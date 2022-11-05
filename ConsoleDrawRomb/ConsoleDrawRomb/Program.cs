@@ -3,7 +3,6 @@
 
 
 bool isContinue = true;
-bool isPouring = true;
 
 
 do
@@ -15,7 +14,7 @@ do
     height /= 2;
     String a = "*";
     int h = 1;
-    int h1 = height - 1;
+    int h1 = height*2 - 1;
 
 
     for (int y = height; y > 0; y--)
