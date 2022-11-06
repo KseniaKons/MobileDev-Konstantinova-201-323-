@@ -1,3 +1,7 @@
+using System.Windows.Forms;
+
+
+
 namespace WinFormsImageScroll
 {
     public partial class Form1 : Form
@@ -5,10 +9,11 @@ namespace WinFormsImageScroll
         private Bitmap p;
         private Point startPoint;
         private Point curPoint = new Point(0, 0);
-        private Rectangle rect;
-
+        private Rectangle rect = new Rectangle (0,0,300,300);
         public static int NumImage { get; private set; } = 0;
-        public int ZoomDel { get; private set; } = 100;
+        public int ZoomDel1 { get; private set; } = 100;
+        int xDelta;
+        
 
         public Form1()
         {
@@ -16,15 +21,33 @@ namespace WinFormsImageScroll
 
             NextImage();
 
-            pxImage.Paint += (s, e) => e.Graphics.DrawImage(p, curPoint);
+            
+            
+           // pxImage.Paint += (s, e) => e.Graphics.DrawImage(p, curPoint);
             // public void DrawImage(Image image, int x, int y, Rectangle srcRect, GraphicsUnit srcUnit);
-            pxImage.MouseDown += (s, e) => startPoint = e.Location;
+
+
+            pxImage.Paint += (s, e) => e.Graphics.DrawImageUnscaled(p, rect);
+
+            //pxImage.Image = p;
+
+
+            pxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;  
+            
+            
+
             pxImage.MouseMove += PxImage_MouseMove;
             pxImage.MouseWheel += PxImage_MouseWheel;
+            pxImage.MouseDown += PxImage_MouseDown;
 
-            this.KeyDown += Form1_KeyDown;
-            this.Text += $" : F1 - Следующая картинка";
+           this.KeyDown += Form1_KeyDown;
+           this.Text += $" : F1 - Следующая картинка";
 
+        }
+
+        private void PxImage_MouseDown(object? sender, MouseEventArgs e)
+        {
+            startPoint = e.Location;
         }
 
         private void NextImage()
@@ -33,10 +56,10 @@ namespace WinFormsImageScroll
             switch (NumImage)
             {
                 case 0:
-                    p = new Bitmap(Properties.Resources.popug);
+                    p = new Bitmap(Properties.Resources._123); 
                     break;
                 case 1:
-                    p = new Bitmap(Properties.Resources.fon);
+                    p = new Bitmap(Properties.Resources._456);
                     break;
             }
             pxImage.Invalidate();
@@ -58,12 +81,18 @@ namespace WinFormsImageScroll
         private void PxImage_MouseWheel(object? sender, MouseEventArgs e)
         {
 
-            ZoomDel += e.Delta < 0 ? 2 : -2;
-            //запрогать зум
-            //e.Graphics.DrawImage(p, curPoint); на основе этого
-
-           
-
+            xDelta = e.Delta > 0 ? 2 : -2;
+            ZoomDel1 += xDelta;
+            if (sender is Control c)
+            {
+                c.Location = new Point(
+                        c.Location.X - xDelta,
+                        c.Location.Y - xDelta
+                    );
+                c.Width += xDelta * 2;
+                c.Height += xDelta * 2;
+                //rect = new Rectangle (c.Location.X, c.Location.Y, c.Width, c.Height);   
+            }
             pxImage.Invalidate();
             RefresStatus();
         }
@@ -74,7 +103,6 @@ namespace WinFormsImageScroll
             {
                 curPoint.X += e.X - startPoint.X;
                 curPoint.Y += e.Y - startPoint.Y;
-                startPoint = e.Location;
                 pxImage.Invalidate();
             }
 
@@ -84,7 +112,8 @@ namespace WinFormsImageScroll
 
         private void RefresStatus()
         {
-            LaStatus.Text = $" NumImage = {NumImage}, startPoint = {startPoint}, curPoint = {curPoint}, ZoomDel = {ZoomDel}";
+           // LaStatus.Text = $" NumImage = {NumImage}, startPoint = {startPoint}, curPoint = {curPoint}, ZoomDel = {ZoomDel1}";
+            LaStatus.Text = $" NumImage = {NumImage}, startPoint = {startPoint}, rect = {rect}, ZoomDel = {ZoomDel1}";
         }
     }
 }

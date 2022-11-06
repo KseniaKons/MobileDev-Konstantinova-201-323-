@@ -40,9 +40,10 @@
             this.pxImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pxImage.Location = new System.Drawing.Point(173, 51);
+            this.pxImage.Location = new System.Drawing.Point(173, 90);
             this.pxImage.Name = "pxImage";
-            this.pxImage.Size = new System.Drawing.Size(405, 368);
+            this.pxImage.Size = new System.Drawing.Size(378, 328);
+            this.pxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pxImage.TabIndex = 0;
             this.pxImage.TabStop = false;
             // 

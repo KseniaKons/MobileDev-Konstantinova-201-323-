@@ -63,9 +63,9 @@ namespace WinFormsImageScroll.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fon {
+        internal static System.Drawing.Bitmap _123 {
             get {
-                object obj = ResourceManager.GetObject("fon", resourceCulture);
+                object obj = ResourceManager.GetObject("123", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace WinFormsImageScroll.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap popug {
+        internal static System.Drawing.Bitmap _456 {
             get {
-                object obj = ResourceManager.GetObject("popug", resourceCulture);
+                object obj = ResourceManager.GetObject("456", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
