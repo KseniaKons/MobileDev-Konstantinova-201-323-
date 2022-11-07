@@ -1,0 +1,59 @@
+﻿<Window x:Class="WpfTabs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTabs"
+        mc:Ignorable="d"
+        Title="Tabs" Height="450" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.CommandBindings>
+            <CommandBinding Command="local:MyCommands.cmdAddPage"
+                            Executed="cmdAddPage_Execute"/>
+
+            <CommandBinding Command="local:MyCommands.cmdDeletCurPage"
+                            Executed="cmdDeletCurPage_Execute"/>
+        </Grid.CommandBindings>
+
+        <ToolBar Grid.Row="0" >
+            <Button Content="Add Page" Command="local:MyCommands.cmdAddPage"/>
+            <Button Content="Delete cur Page" Command="local:MyCommands.cmdDeletCurPage"/>
+        </ToolBar>
+
+        <TabControl Grid.Row="1" Name="tc">
+            <TabItem Header="Вкладка 1">
+                <TextBox Text="Какой-то текст..."/>
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>Вкладка 2</TabItem.Header>
+                <StackPanel>
+                    <TextBlock Text="2+2=?"/>
+                    <Button Content="2"/>
+                    <Button Content="4"/>
+                    <Button Content="22"/>
+                    <Button Content="11"/>
+                    <Button Content="3"/>
+                </StackPanel>                
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/126281.png" Height="32"/>
+                        <TextBlock Text="Вкладка 3"/>
+                        <TextBlock Text="!!!!!!!!"/>
+                        <Button Content="X"/>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            
+        </TabControl>
+
+    </Grid>
+</Window>
