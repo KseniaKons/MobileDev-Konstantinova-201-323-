@@ -1,0 +1,50 @@
+﻿<Window x:Class="wpfEventRoute.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfEventRoute"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>            
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Background="LightSalmon">
+            
+            <Button Content="Clear" Margin="10" Click="ButtonClear"/>
+
+            <StackPanel Background="LightCyan" Margin="5" Height="80" 
+                           MouseDown="All_MouseDown">
+                <WrapPanel Background="LightCoral" Margin="5" Height="50"
+                           MouseDown="All_MouseDown">
+                    <TextBlock Background="LightPink" Margin="5" Text="UP" 
+                           MouseDown="All_MouseDown"/>
+                </WrapPanel>
+            </StackPanel>
+
+            <StackPanel Background="LightCyan" Margin="5" Height="80" 
+                           PreviewMouseDown="All_MouseDown">
+                <WrapPanel Background="LightCoral" Margin="5" Height="50"
+                           PreviewMouseDown="All_MouseDown">
+                    <TextBlock Background="LightPink" Margin="5" Text="DOWN" 
+                           PreviewMouseDown="All_MouseDown"/>
+                </WrapPanel>
+            </StackPanel>
+
+            <StackPanel Background="LightCyan" Margin="5" Height="80" 
+                           MouseEnter="All_MouseEnter">
+                <WrapPanel Background="LightCoral" Margin="5" Height="50"
+                           MouseEnter="All_MouseEnter">
+                    <TextBlock Background="LightPink" Margin="5" Text="NORMAL" 
+                           MouseEnter="All_MouseEnter"/>
+                </WrapPanel>
+            </StackPanel>
+
+        </StackPanel>
+        
+        <ListBox x:Name="lbLogs" Grid.Column="1" Background="LightBlue"/>
+    </Grid>
+</Window>
