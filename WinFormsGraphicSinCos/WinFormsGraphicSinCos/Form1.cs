@@ -14,13 +14,34 @@
             DrawAll();
             this.Resize += (s, e) => DrawAll();
             this.Text += " : (Sin - красный, Cos - синий, Tan - заленый)";
+            ll.BringToFront();
+            this.MouseMove += MouseMoveSinCosTan;
+        }
+        
+        private void MouseMoveSinCosTan(object? sender, MouseEventArgs e)
+        {
+            ll.Text = $"Sin = {Math.Sin(5 * Math.PI * e.X / ClientSize.Width)}, Cos = {Math.Cos(5 * Math.PI * e.X / ClientSize.Width)} , Tan = {Math.Tan(5 * Math.PI * e.X / ClientSize.Width)}";
+
+            if (sender is Control c)
+            {
+                ll.Location = new Point(
+                    e.X + 5,
+                    e.Y + 5
+                    );
+               
+            }
+            var b = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
+            var g = Graphics.FromImage(b);
+
+            GC.Collect();
         }
 
         private void DrawAll()
         {
+
             var b = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
-            var g = Graphics.FromImage(b);  
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias; //лучшая отрисовка изображения
+            var g = Graphics.FromImage(b);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             var grShiftY = b.Height / 2;    
             var grShiftX = b.Width / 2;
