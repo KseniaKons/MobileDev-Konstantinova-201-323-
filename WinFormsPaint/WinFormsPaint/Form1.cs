@@ -135,6 +135,19 @@ namespace WinFormsPaint
 
                     case MyDrawMode.Rctangle:
                         RestorBitMap();
+                        if (ckFillMode.Checked)
+                        {
+                           g.FillRectangle(new SolidBrush(myPen.Color),
+                            new Rectangle(startMousDown.X, startMousDown.Y,
+                            e.X - startMousDown.X, e.Y - startMousDown.Y));
+                        }
+                        else
+                        {
+                            g.DrawRectangle(myPen,
+                            new Rectangle(startMousDown.X, startMousDown.Y,
+                            e.X - startMousDown.X, e.Y - startMousDown.Y));
+                        }
+
                         break;
 
                     case MyDrawMode.Triangle:
